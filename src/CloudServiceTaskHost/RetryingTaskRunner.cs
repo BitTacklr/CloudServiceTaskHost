@@ -34,22 +34,22 @@ namespace CloudServiceTaskHost
             return _next.
                 RunAsync(cancellationToken).
                 ContinueWith(
-                    task => RetryAsync(task, cancellationToken, _retryCount, _timeBetweenRetries), 
+                    task => RetryAsync(task, _next, cancellationToken, _retryCount, _timeBetweenRetries), 
                     cancellationToken).
                 Unwrap();
         }
 
-        private async Task RetryAsync(Task task, CancellationToken cancellationToken, int restCount, TimeSpan timeBetweenRetries)
+        private static async Task RetryAsync(Task task, ITaskRunner next, CancellationToken cancellationToken, int restCount, TimeSpan timeBetweenRetries)
         {
             if (!task.IsFaulted || task.Exception == null) return;
             if (restCount == 0) throw task.Exception;
             
             await Task.Delay(timeBetweenRetries, cancellationToken);
 
-            await _next.
+            await next.
                 RunAsync(cancellationToken).
                 ContinueWith(
-                    _ => RetryAsync(_, cancellationToken, restCount - 1, timeBetweenRetries),
+                    _ => RetryAsync(_, next, cancellationToken, restCount - 1, timeBetweenRetries),
                     cancellationToken);
         }
     }

@@ -8,7 +8,7 @@ namespace CloudServiceTaskHost
 {
     public class ProcessTaskRunner : TaskRunner
     {
-        private const string WorkerRoleShutdownFileEnvironmentVariableName = "WORKERROLE_SHUTDOWN_FILE";
+        private const string WorkerRoleShutdownFileEnvironmentVariableName = "WORKERJOBS_SHUTDOWN_FILE";
 
         private readonly ProcessStartInfo _startInfo;
         private readonly TimeSpan _waitForExitTimeout;
@@ -26,7 +26,9 @@ namespace CloudServiceTaskHost
                 StartNew(
                     () =>
                     {
-                        using (var shutdownFile = ShutdownFile.CreateRandom(new DirectoryInfo(Path.GetDirectoryName(_startInfo.FileName))))
+                        using (var shutdownFile = ShutdownFile.CreateRandom(
+                            new DirectoryInfo(
+                                Path.GetDirectoryName(_startInfo.FileName))))
                         {
                             _startInfo.EnvironmentVariables[WorkerRoleShutdownFileEnvironmentVariableName] = shutdownFile.FullName;
                             using (var process = Process.Start(_startInfo))

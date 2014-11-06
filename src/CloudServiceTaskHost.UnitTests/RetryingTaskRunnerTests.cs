@@ -74,7 +74,7 @@ namespace CloudServiceTaskHost
         }
 
         [Test]
-        public async Task RunAsyncWithCancelledTokenDoesNotRetryWhenNextRunnerFails()
+        public void RunAsyncWithCancelledTokenDoesNotRetryWhenNextRunnerFails()
         {
             var next = new FaultyTaskRunner(new Exception("Message"), 1);
             var sut = SutFactory(next, 1, TimeSpan.Zero);
