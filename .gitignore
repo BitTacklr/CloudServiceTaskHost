@@ -5,6 +5,10 @@
 *.suo
 *.user
 *.sln.docstates
+build/*.log
+build/nunit*.xml
+build/output
+build/packages
 
 # Build results
 [Dd]ebug/

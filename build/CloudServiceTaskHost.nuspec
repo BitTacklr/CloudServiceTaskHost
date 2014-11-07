@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CloudServiceTaskHost</id>
+    <version>0.0.0</version>
+    <authors>Yves Reynhout</authors>
+    <owners>BitTacklr, Yves Reynhout</owners>
+    <title>CloudServiceTaskHost</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.github.com/yreynhout/CloudServiceTaskHost/master/LICENSE.txt</licenseUrl>
+    <description>CloudServiceTaskHost provides lightweight infrastructure for hosting jobs in an Azure Worker Role.</description>
+    <projectUrl>https://github.com/yreynhout/CloudServiceTaskHost</projectUrl>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2014, BitTacklr. All rights reserved.</copyright>
+    <tags>messaging Azure</tags>
+  </metadata>
+  <files>
+    <file src="output\csharp\CloudServiceTaskHost.dll" target="lib\net45\CloudServiceTaskHost.dll" />
+    <file src="output\csharp\CloudServiceTaskHost.pdb" target="lib\net45\CloudServiceTaskHost.pdb" />
+    <!-- <file src="output\csharp\CloudServiceTaskHost.xml" target="lib\net45\CloudServiceTaskHost.xml" /> -->
+    <file src="..\src\CloudServiceTaskHost\*.cs" target="src\CloudServiceTaskHost" />
+    <file src="..\src\CloudServiceTaskHost\Properties\*.cs" target="src\CloudServiceTaskHost\Properties" />
+  </files>
+</package>
