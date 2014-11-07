@@ -35,6 +35,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlockingTaskHost.cs" />
     <Compile Include="TasksRunner.cs" />
     <Compile Include="ITasksRunner.cs" />
     <Compile Include="ITaskRunner.cs" />
