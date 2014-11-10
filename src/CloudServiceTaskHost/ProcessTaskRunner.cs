@@ -30,6 +30,7 @@ namespace CloudServiceTaskHost
                             new DirectoryInfo(
                                 Path.GetDirectoryName(_startInfo.FileName))))
                         {
+                            _startInfo.UseShellExecute = false;
                             _startInfo.EnvironmentVariables[WorkerRoleShutdownFileEnvironmentVariableName] = shutdownFile.FullName;
                             using (var process = Process.Start(_startInfo))
                             {
